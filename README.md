@@ -3,6 +3,9 @@
 メイドさんのモデルを最新バージョンの開発環境で実行できるようにするModです。
 このModを導入することによってプロジェクト内でメイドさんのモデルを実行出来るようになります。
 
+## 自分のプロジェクトに導入する方法
+作成中...
+
 ## ビルド
 
 1. littlemaidjarsに[LittleMaidModelLoader](https://www.dropbox.com/sh/tzkdz46y67tuohx/AABO0HA8RW9EyVviDS1Vgqs9a/LittleMaidModelLoader/Fabric)と[LittleMaidRebirth](https://www.dropbox.com/sh/tzkdz46y67tuohx/AABcIg3uqXzAHR7ysdBLEJt3a/LittleMaidReBirth/Fabric)を入れる(詳しくはlittlemaidjars内の[README](https://github.com/Yukkuritaku/LittleMaidModelDevelopment/blob/1.20/littlemaidjars/README.md)を参照)
