@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "com.github.yukkuritaku.littlemaidmodeldevelopment.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"LMMLModMixin",
+		"LMMultiModelLoaderMixin",
+		"MultiModelClassTransformerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -1,31 +1,31 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "littlemaidmodeldevelopment",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "LittleMaid ModelDevelopment",
+	"description": "Create the LittleMaidModel for latest version in development environment.",
 	"authors": [
-		"Me!"
+		"Yukkuritaku"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "assets/littlemaidmodeldevelopment/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"com.github.yukkuritaku.littlemaidmodeldevelopment.LMMDMod"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"com.github.yukkuritaku.littlemaidmodeldevelopment.LMMDModClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"littlemaidmodeldevelopment.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "littlemaidmodeldevelopment.client.mixins.json",
 			"environment": "client"
 		}
 	],
@@ -33,9 +33,8 @@
 		"fabricloader": ">=0.14.21",
 		"minecraft": "~1.20.1",
 		"java": ">=17",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
+		"fabric-api": "*",
+		"littlemaidmodelloader": ">=8.0.0",
+		"littlemaidrebirth": ">=8.0.8"
 	}
 }

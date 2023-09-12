@@ -16,13 +16,30 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	maven {
+		name = 'Cloth Config API'
+		url = 'https://maven.shedaniel.me/'
+	}
+	maven {
+		name = 'ModMenu'
+		url = 'https://maven.terraformersmc.com/releases/'
+	}
+	maven {
+		name = 'ParchmentMC'
+		url = 'https://maven.parchmentmc.org'
+	}
 }
 
 loom {
     splitEnvironmentSourceSets()
-
+	runs{
+		client{
+			property("lmmd.dev", "${sourceSets.main.output.getClassesDirs().asPath}")
+			client()
+		}
+	}
 	mods {
-		"modid" {
+		"littlemaidmodeldevelopment" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}
@@ -33,11 +50,22 @@ loom {
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	//mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	mappings loom.layered(){
+		officialMojangMappings()
+		parchment("org.parchmentmc.data:parchment-1.20.1:2023.09.03@zip")
+	}
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	
+	modApi "dev.architectury:architectury-fabric:${project.architectury_version}"
+	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	modApi("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_api_version}") {
+		exclude(group: "net.fabricmc.fabric-api")
+	}
+	modImplementation(fileTree(dir: "./littlemaidjars", include: "*.jar"))
 	
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
@@ -54,7 +82,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release.set(17)
 }
 
 java {
@@ -79,10 +107,25 @@ publishing {
 		mavenJava(MavenPublication) {
 			from components.java
 		}
+
+		gpr(MavenPublication) {
+			groupId group
+			artifactId project.archives_base_name
+			version version
+			from components.java
+		}
 	}
 
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
+		maven {
+			name = "GithubRepository"
+			url = uri("https://maven.pkg.github.com/Yukkuritaku/LittleMaidModelDevelopment")
+			credentials {
+				username = System.getProperty("gpr_user")
+				password = System.getProperty("gpr_key")
+			}
+		}
 		// Add repositories to publish to here.
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
