@@ -3,8 +3,8 @@ plugins {
 	id 'maven-publish'
 }
 
-version = project.mod_version
-group = project.maven_group
+version = "1.0.0"
+group = "com.github.yukkuritaku"
 
 base {
 	archivesName = project.archives_base_name
@@ -125,7 +125,7 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 		maven {
-			name = "GithubRepository"
+			name = "Github"
 			url = uri("https://maven.pkg.github.com/Yukkuritaku/LittleMaidModelDevelopment")
 			credentials {
 				username = System.getProperty("gpr_user")
