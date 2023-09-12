@@ -9,9 +9,10 @@
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Yukkuritaku/LittleMaidModelDevelopment",
+		"issues": "https://github.com/Yukkuritaku/LittleMaidModelDevelopment/issues"
 	},
-	"license": "CC0-1.0",
+	"license": "https://github.com/Yukkuritaku/LittleMaidModelDevelopment/blob/1.20/LICENSE.txt",
 	"icon": "assets/littlemaidmodeldevelopment/icon.png",
 	"environment": "*",
 	"entrypoints": {
