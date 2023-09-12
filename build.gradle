@@ -103,11 +103,11 @@ jar {
 
 // configure the maven publication
 publishing {
+	file(".env").readLines().each {
+		def (key, value) = it.tokenize('=')
+		System.setProperty(key, value)
+	}
 	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-
 		gpr(MavenPublication) {
 			groupId group
 			artifactId project.archives_base_name

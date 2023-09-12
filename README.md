@@ -1,8 +1,9 @@
-# Fabric Example Mod
+# LittleMaidModelDevelopment
 
-## Setup
+## セットアップ
 
-For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
+セットアップ工程はIDEによって違うので[fabricのwikiページ](https://fabricmc.net/wiki/ja:tutorial:setup)を参照してください！
+
 
 ## License
 
