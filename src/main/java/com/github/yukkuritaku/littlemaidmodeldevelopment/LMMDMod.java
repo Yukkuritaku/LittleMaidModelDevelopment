@@ -2,7 +2,6 @@ package com.github.yukkuritaku.littlemaidmodeldevelopment;
 
 import dev.architectury.platform.Platform;
 import net.fabricmc.api.ModInitializer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

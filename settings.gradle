@@ -1,12 +1,40 @@
 pluginManagement {
+	resolutionStrategy {
+		eachPlugin {
+			if(requested.id.toString() == "io.github.yukkuritaku.maid-gradle")
+				useModule("com.github.Yukkuritaku.maid-gradle:io.github.yukkuritaku.maid-gradle.gradle.plugin:0.2")
+		}
+	}
 	repositories {
 		maven {
 			name = 'Fabric'
 			url = 'https://maven.fabricmc.net/'
 		}
+		maven { url "https://maven.architectury.dev/" }
+		maven { url "https://maven.minecraftforge.net/" }
+		maven { url 'https://jitpack.io' }
 		mavenCentral()
 		gradlePluginPortal()
 	}
 }
+
+/*sourceControl {
+	gitRepository("https://github.com/SistrScarlet/LittleMaidModelLoader-Architectury.git"){
+		producesModule("net.sistr.littlemaidmodelloader:LMML-architectury")
+		rootDir = "common"
+		plugins{
+			id "dev.architectury.loom"
+			id "architectury-plugin"
+		}
+	}
+	gitRepository("https://github.com/SistrScarlet/LittleMaidReBirth-Architectury.git"){
+		producesModule("net.sistr.littlemaidrebirth:LMRB-architectury")
+		rootDir = "common"
+		plugins{
+			id "dev.architectury.loom"
+			id "architectury-plugin"
+		}
+	}
+}*/
 
 rootProject.name = "LittleMaidModelDevelopment"
