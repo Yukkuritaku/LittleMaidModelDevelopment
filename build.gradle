@@ -37,11 +37,15 @@ repositories {
 	}
 }
 
+println(sourceSets.main.output.getClassesDirs().asPath)
+
 loom {
     splitEnvironmentSourceSets()
 	runs{
 		client{
-			property("lmmd.dev", "${sourceSets.main.output.getClassesDirs().asPath}")
+			property("lmmd.dev.classes", "${sourceSets.main.output.getClassesDirs().asPath}")
+			property("lmmd.dev.resources", "${sourceSets.main.output.getResourcesDir().absolutePath}")
+			property("mixin.debug", "true")
 			client()
 		}
 	}

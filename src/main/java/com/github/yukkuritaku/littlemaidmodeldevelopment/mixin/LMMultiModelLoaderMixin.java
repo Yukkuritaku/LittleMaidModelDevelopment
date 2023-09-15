@@ -12,14 +12,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.io.InputStream;
 import java.nio.file.Path;
 
-@Mixin(LMMultiModelLoader.class)
+@Mixin(value = LMMultiModelLoader.class, remap = false)
 public class LMMultiModelLoaderMixin {
 
     @Unique
     private boolean mixin_isArchive;
 
     @Inject(method = "load",
-            at = @At("HEAD"),
+            at = @At(value = "HEAD", remap = false),
             remap = false
     )
     private void injectLoad(String path, Path folderPath, InputStream inputStream, boolean isArchive, CallbackInfo ci){
@@ -29,12 +29,12 @@ public class LMMultiModelLoaderMixin {
             logPath = logPath.substring(1);
 
         }
-        LMMDMod.LOGGER.info("path: {}, folderPath: {}, inputStream: {}, isArchive: {}", logPath.replace("\\", "/"), folderPath, inputStream.toString(), isArchive);
+        LMMDMod.LOGGER.info("[LMMultiModelLoaderMixin] path: {}, folderPath: {}, inputStream: {}, isArchive: {}", logPath.replace("\\", "/"), folderPath, inputStream.toString(), isArchive);
         mixin_isArchive = isArchive;
     }
 
     @ModifyVariable(method = "load",
-            at = @At("HEAD"),
+            at = @At(value = "HEAD", remap = false),
             remap = false, argsOnly = true)
     private String injectVariable(String value){
         if (!mixin_isArchive){
