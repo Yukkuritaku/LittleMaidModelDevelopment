@@ -7,12 +7,12 @@ import org.slf4j.LoggerFactory;
 
 public class LMMDMod implements ModInitializer {
 
-	public static final Logger LOGGER = LoggerFactory.getLogger("littlemaidmodeldevelopment");
+    public static final Logger LOGGER = LoggerFactory.getLogger("littlemaidmodeldevelopment");
 
-	@Override
-	public void onInitialize() {
-		if (!Platform.isDevelopmentEnvironment()){
-			LOGGER.warn("このModは開発環境専用のModです。通常環境で使用しても効果はありません！");
-		}
-	}
+    @Override
+    public void onInitialize() {
+        if (!Platform.isDevelopmentEnvironment()) {
+            LOGGER.warn("このModは開発環境専用のModです。通常環境で使用しても効果はありません！");
+        }
+    }
 }

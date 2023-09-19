@@ -1,7 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.3-SNAPSHOT'
 	id 'maven-publish'
-	id 'io.github.yukkuritaku.maid-gradle' version '0.2'
+	id 'io.github.yukkuritaku.maid-gradle' version '0.4'
 }
 
 maidgradle{
@@ -10,7 +10,7 @@ maidgradle{
 	littleMaidReBirthVersion("${project.littlemaid_rebirth_version}")
 }
 
-version = "1.0.0"
+version = "1.0.1"
 group = "com.github.yukkuritaku"
 
 base {
@@ -55,7 +55,6 @@ loom {
 			sourceSet sourceSets.client
 		}
 	}
-
 }
 
 configurations {
@@ -117,18 +116,8 @@ jar {
 
 // configure the maven publication
 publishing {
-	def envFile = file(".env")
-	if (envFile.exists()) {
-		envFile.readLines().each {
-			def (key, value) = it.tokenize('=')
-			System.setProperty(key, value)
-		}
-	}
 	publications {
-		gpr(MavenPublication) {
-			groupId group
-			artifactId project.archives_base_name
-			version version
+		mavenJava(MavenPublication) {
 			from components.java
 		}
 	}
@@ -139,13 +128,5 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
-		maven {
-			name = "Github"
-			url = uri("https://maven.pkg.github.com/Yukkuritaku/LittleMaidModelDevelopment")
-			credentials {
-				username = System.getProperty("gpr_user")
-				password = System.getProperty("gpr_key")
-			}
-		}
 	}
 }

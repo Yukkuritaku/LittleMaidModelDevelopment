@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Map;
 
@@ -18,36 +17,10 @@ public class MultiModelClassTransformerMixin {
 
     @Shadow(remap = false) @Final private static Map<String, String> CODE_REPLACE_MAP;
 
-    /*@Inject(method = "transform", at = @At(value = "HEAD", remap = false), remap = false)
-    private void injectTransform(byte[] basicClass, CallbackInfoReturnable<byte[]> cir){
-        if (Platform.isDevelopmentEnvironment()) {
-            boolean isOfficialMapping = true;
-            try {
-                //net.minecraft.world.entity.Entityが存在しているかチェックする(Fabric側だとチェックする方法が無かった)
-                Class.forName("net.minecraft.world.entity.Entity", false, MultiModelClassTransformer.class.getClassLoader());
-            } catch (ClassNotFoundException e) {
-                isOfficialMapping = false;
-                LMMDMod.LOGGER.info("Official or Parchment mapping not found, detected yarn or other mapping.");
-            }
-            if (isOfficialMapping) {
-                LMMDMod.LOGGER.info("Official or Parchment mapping found, replace some transformers.");
-                //OfficialかParchmentマッピングだとEntityはnet/minecraft/entity/Entityにないからnet/minecraft/world/entity/Entityに変更させる
-                //これをしないともしLMMLResourcesからZipでモデルを読み込むときにClassNotFoundExceptionが例外スローされてしまう(開発環境だとあまりないと思うけど一応ね！)
-                //putではなくreplaceなのは一応置き換えるためにやってるけどもしかしたら必要ないかもしれへん
-                CODE_REPLACE_MAP.put("net/minecraft/entity/Entity", "net/minecraft/world/entity/Entity");
-                //以下同様ですの
-                CODE_REPLACE_MAP.put("net/minecraft/entity/EntityLivingBase", "net/minecraft/world/entity/LivingEntity");
-                CODE_REPLACE_MAP.put("net/minecraft/entity/passive/EntityAnimal", "net/minecraft/world/entity/animal/Animal");
-                CODE_REPLACE_MAP.put("net/minecraft/entity/player/EntityPlayer", "net/minecraft/world/entity/player/Player");
-            }
-        }
-    }*/
-
     @Inject(method = "<clinit>", at = @At(
             value = "TAIL",
             remap = false
-    ),
-    remap = false)
+    ), remap = false)
     private static void injectStatic(CallbackInfo ci){
         if (Platform.isDevelopmentEnvironment()) {
             boolean isOfficialMapping = true;
@@ -62,8 +35,6 @@ public class MultiModelClassTransformerMixin {
                 LMMDMod.LOGGER.info("Official or Parchment mapping found, replace some transformers.");
                 //OfficialかParchmentマッピングだとEntityはnet/minecraft/entity/Entityにないからnet/minecraft/world/entity/Entityに変更させる
                 //これをしないともしLMMLResourcesからZipでモデルを読み込むときにClassNotFoundExceptionが例外スローされてしまう(開発環境だとあまりないと思うけど一応ね！)
-                //putではなくreplaceなのは一応置き換えるためにやってるけどもしかしたら必要ないかもしれへん
-
                 LMMDMod.LOGGER.info("{} -> {}", "net/minecraft/entity/Entity", "net/minecraft/world/entity/Entity");
                 CODE_REPLACE_MAP.put("net/minecraft/entity/Entity", "net/minecraft/world/entity/Entity");
                 //以下同様ですの

@@ -15,6 +15,7 @@ public class LMTextureLoaderMixin {
 
     @Inject(method = "load", at = @At(value = "HEAD", remap = false), remap = false)
     private void injectLoad(String path, Path folderPath, InputStream inputStream, boolean isArchive, CallbackInfo ci){
-        LMMDMod.LOGGER.info("[LMTextureLoaderMixin] path: {}, folderPath: {}, inputStream: {}, isArchive: {}", path, folderPath, inputStream, isArchive);
+        LMMDMod.LOGGER.info("[LMTextureLoaderMixin] path: {}, folderPath: {}, inputStream: {}, isArchive: {}",
+                path.replace("\\", "/"), folderPath, inputStream, isArchive);
     }
 }
