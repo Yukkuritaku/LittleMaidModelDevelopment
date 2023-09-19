@@ -1,7 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.3-SNAPSHOT'
 	id 'maven-publish'
-	id 'io.github.yukkuritaku.maid-gradle' version '0.4'
+	id 'io.github.yukkuritaku.maid-gradle' version '0.5'
 }
 
 maidgradle{
@@ -36,8 +36,6 @@ repositories {
 		url = 'https://maven.parchmentmc.org'
 	}
 }
-
-println(sourceSets.main.output.getClassesDirs().asPath)
 
 loom {
     splitEnvironmentSourceSets()
