@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//LittleMaidModelLoader 4.5.0まで対応
 public class LMMDMod implements ModInitializer {
 
     public static final Logger LOGGER = LoggerFactory.getLogger("littlemaidmodeldevelopment");
