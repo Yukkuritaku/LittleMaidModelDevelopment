@@ -10,7 +10,7 @@ maidgradle{
 	littleMaidReBirthVersion("${project.littlemaid_rebirth_version}")
 }
 
-version = "1.0.2"
+version = "1.0.3"
 group = "com.github.yukkuritaku"
 
 base {
