@@ -31,8 +31,6 @@ dependencies {
         transitive = false
     }
 }
-
-
 ```
 </details>
 
