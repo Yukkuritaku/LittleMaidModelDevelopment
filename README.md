@@ -13,21 +13,21 @@ loom {
         client {
             property("lmmd.dev.classes", "${sourceSets.main.output.getClassesDirs().asPath}")
             property("lmmd.dev.resources", "${sourceSets.main.output.getResourcesDir().absolutePath}")
-            ...
+            //...
         }
     }
-    ...
+    //...
 }
 
 repositories {
-    ...
+    //...
     //jitpackを追加
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    ...
-    modImplementation("com.github.Yukkuritaku:LittleMaidModelDevelopment:使用したいバージョン"){
+    //...
+    modImplementation("com.github.Yukkuritaku:LittleMaidModelDevelopment:使用したいバージョン") {
         transitive = false
     }
 }
